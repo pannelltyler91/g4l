@@ -11,8 +11,9 @@ var session = require('express-session');
 app.use(express.json());
 app.use(cors());
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
+app.use(express.urlencoded({ extended: false }))
 
-app.post('/api/customer/signUp',(req,res) =>{
+app.post('/api/customer/signup',(req,res) =>{
     var matched_users_promise = db.Users.findAll({
         where:  Sequelize.or(
                 {userName: req.body.username}
@@ -26,11 +27,13 @@ app.post('/api/customer/signUp',(req,res) =>{
             db.Users.create({
                 userName: req.body.username,
                 password: passwordHash,
-                userType:'customer'
+                userType:'customer',
+                address: req.body.address,
+                phone:req.body.phone
             }).then(function(){
                 let newSession = req.session;
                 newSession.userName = req.body.username;
-                res.redirect('/');
+                res.json({newclient:req.body.username, newpassword:req.body.password})
             });
         }
         // re renders register page with error if found duplicate
@@ -40,6 +43,10 @@ app.post('/api/customer/signUp',(req,res) =>{
         }
     })
 });
+
+app.post('/api/customer/login', (req,res) => {
+
+})
 
 
 
