@@ -1,12 +1,12 @@
 import {Component} from 'react';
 import {NavLink,Route,Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import Home from '../components/home';
 import Login from '../components/login';
 import Signup from '../components/signup';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import './css/link.css';
+import {BrowserRouter} from 'react-router-dom';
+
 
 
 
@@ -15,7 +15,8 @@ class Navagation extends Component{
        
         return(
             <div>
-
+                <BrowserRouter>
+                
                 <Navbar  sticky='top'variant="dark" expand="lg" className='navbar'>
                     <Navbar.Brand href="/">G4L</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -28,11 +29,11 @@ class Navagation extends Component{
                     </Navbar.Collapse>
                 </Navbar>
                                 <Switch>
-                                    <Route exact path='/' component={Home}></Route>
                                     <Route exact path='/login' component={Login}></Route>
                                     <Route exact path='/signup' component={Signup}></Route>
                                    
                                 </Switch>
+                </BrowserRouter>
 
             </div>
                     

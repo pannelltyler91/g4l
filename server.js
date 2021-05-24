@@ -6,6 +6,7 @@ var Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 const cors = require('cors')
 var session = require('express-session');
+const { FormControl } = require('react-bootstrap');
 
 
 app.use(express.json());
@@ -45,6 +46,14 @@ app.post('/api/customer/signup',(req,res) =>{
 });
 
 app.post('/api/customer/login', (req,res) => {
+    db.Users.findOne({
+        where:{
+            userName:req.body.username,
+            password:req.body.password 
+        }
+    }).then((user) => {
+        console.log(user);
+    })
 
 })
 
