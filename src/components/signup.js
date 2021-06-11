@@ -6,19 +6,19 @@ class Signup extends Component{
         return(
             <div>
                 <form action='http://localhost:3001/api/customer/signup' method='POST'>
-                    <label forHtml='username'>Username/Email:</label>
+                    <label forhtml='username'>Username/Email:</label>
                     <br></br>
                     <input type='text' name='username' id='username'></input>
                     <br></br>
-                    <label forHtml='password'>Password:</label>
+                    <label forhtml='password'>Password:</label>
                     <br></br>
                     <input type='password' name='password' id='password'></input>
                     <br></br>
-                    <label forHtml='password'>Address:</label>
+                    <label forhtml='password'>Address:</label>
                     <br></br>
                     <input type='text' name='address' id='address'></input>
                     <br></br>
-                    <label forHtml='password'>Phone number:</label>
+                    <label forhtml='password'>Phone number:</label>
                     <br></br>
                     <input type='text' name='phoneNumber' id='phoneNumber'></input>
                     <br></br>

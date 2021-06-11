@@ -6,7 +6,7 @@ var Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 const cors = require('cors')
 var session = require('express-session');
-const { FormControl } = require('react-bootstrap');
+
 
 
 app.use(express.json());
@@ -46,15 +46,30 @@ app.post('/api/customer/signup',(req,res) =>{
 });
 
 app.post('/api/customer/login', (req,res) => {
-    db.Users.findOne({
-        where:{
-            userName:req.body.username,
-            password:req.body.password 
+    var matched_users_promise = models.User.findAll({
+        where: Sequelize.and(
+            {email: req.body.email},
+        )
+    });
+    matched_users_promise.then(function(users){ 
+        // renders home page if password hash and email matches 
+        if(users.length > 0){
+            let user = users[0];
+            let passwordHash = user.password;
+            if(bcrypt.compareSync(req.body.password,passwordHash)){
+                req.session.email = req.body.email;
+                res.json({login:'success'});
+            }
+            // Wrong password rerenders the login page with Password Error  *Fixed*
+            else{
+                res.json( {errors: "Password Is Wrong"});
+            }
         }
-    }).then((user) => {
-        console.log(user);
-    })
-
+        // Wrong Username  re renders login page with Username error. *Fixed*
+        else{
+            res.json({errors: "Username is Wrong"});
+        }
+    });
 })
 
 

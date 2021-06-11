@@ -4,14 +4,15 @@ class Login extends Component{
     render(){
         return(
             <div>
-                <form>
-                    <label forHtml='username'>Username/Email:</label>
+                <form action='http://localhost:3001/api/customer/login' method='POST'>
+                    <label forhtml='username'>Username/Email:</label>
                     <br></br>
                     <input type='text' name='username' id='username'></input>
                     <br></br>
-                    <label forHtml='password'>Password:</label>
+                    <label forhtml='password'>Password:</label>
                     <br></br>
                     <input type='password' name='password' id='password'></input>
+                    <br></br>
                     <input type='submit' name='submit' value='Submit'></input>
                 </form>
             </div>
