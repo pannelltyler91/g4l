@@ -5,13 +5,14 @@ class Customerprofile extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            clientInfo = []
+            clientInfo : []
         }
     }
     render(){
         return(
             <div>
                 <h2> Customer Profile</h2>
+                <p>You are currently on your profile</p>
                 <Logout></Logout>
             </div>
 

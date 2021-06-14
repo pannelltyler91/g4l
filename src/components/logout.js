@@ -4,7 +4,7 @@ class Logout extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            LoggedIn = false
+            LoggedIn : false
         }
     }
     render(){
