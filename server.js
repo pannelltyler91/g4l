@@ -34,7 +34,7 @@ app.post('/api/customer/signup',(req,res) =>{
             }).then(function(){
                 let newSession = req.session;
                 newSession.userName = req.body.username;
-                res.json({newclient:req.body.username, newpassword:req.body.password})
+                res.json({newclient:req.body.username})
             });
         }
         // re renders register page with error if found duplicate
@@ -58,11 +58,11 @@ app.post('/api/customer/login', (req,res) => {
             let passwordHash = user.password;
             if(bcrypt.compareSync(req.body.password,passwordHash)){
                 req.session.email = req.body.email;
-                res.json({login:'success'});
+                res.json({message:'success'});
             }
             // Wrong password rerenders the login page with Password Error  *Fixed*
             else{
-                res.json( {errors: "Password Is Wrong"});
+                res.json( {message: "Unsuccessful login"});
             }
         }
         // Wrong Username  re renders login page with Username error. *Fixed*

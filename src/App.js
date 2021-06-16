@@ -1,8 +1,9 @@
-import {Component} from 'react';
+
 import {BrowserRouter as Router,Switch,Route,NavLink,Redirect} from 'react-router-dom';
 import Login from '../src/components/login';
 import Signup from '../src/components/signup';
 import Customerprofile from './components/customerProfile';
+import Home from './components/home';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <NavLink to='/profile'> Profile </NavLink>
 
         <Switch>
+          <Route exact path='/' component={Home}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/signup' component={Signup}></Route>
           <Route path='/profile' component={Customerprofile}></Route>
