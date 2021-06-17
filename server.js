@@ -72,6 +72,14 @@ app.post('/api/customer/login', (req,res) => {
     });
 })
 
+app.get('/api/customer/profile', (req,res) => {
+    res.json({greeting:'안녕'});
+})
+
+app.get('/api/home', (req,res) => {
+    res.json({message:'Welcome Home'});
+})
+
 
 
 app.use(express.static(__dirname +'build'));

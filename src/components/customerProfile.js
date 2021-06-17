@@ -8,6 +8,11 @@ class Customerprofile extends Component{
             clientInfo : []
         }
     }
+    componentDidMount(){
+        fetch('http://localhost:3001/api/customer/profile')
+        .then(response => response.json())
+        .then(data => this.setState({greeting:data.greeting}))
+    }
     render(){
         return(
             <div>
