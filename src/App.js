@@ -11,12 +11,13 @@ function App() {
     <div className="App">
       <h1>G4L</h1>
       <Router>
+        <NavLink to='/home'>Home |</NavLink>
         <NavLink to='/login'>Login |</NavLink>
         <NavLink to='/signup'> Signup |</NavLink>
         <NavLink to='/profile'> Profile </NavLink>
 
         <Switch>
-          <Route exact path='/' component={Home}></Route>
+          <Route path='/home' component={Home}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/signup' component={Signup}></Route>
           <Route path='/profile' component={Customerprofile}></Route>
