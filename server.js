@@ -89,6 +89,9 @@ app.get('/api/home', (req,res) => {
     res.json({message:'Welcome Home!'});
 })
 
+app.get('/checkToken', withAuth, function(req, res) {
+    res.sendStatus(200);
+  });
 
 
 app.use(express.static(__dirname +'build'));
