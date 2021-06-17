@@ -18,6 +18,7 @@ class Customerprofile extends Component{
             <div>
                 <h2> Customer Profile</h2>
                 <p>You are currently on your profile</p>
+                <p>{this.state.greeting}</p>
                 <Logout></Logout>
             </div>
 

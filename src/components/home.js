@@ -8,7 +8,7 @@ class Home extends Component{
         }
     }
     componentDidMount(){
-    fetch('https://localhost:3001/api/home')
+    fetch('http://localhost:3001/api/home')
     .then(response => response.json())
     .then(data => this.setState({message:data.message}))
     }
