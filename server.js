@@ -64,13 +64,11 @@ app.post('/api/customer/login', (req,res) => {
             if(bcrypt.compareSync(req.body.password,passwordHash)){
                 const payload = {email};
           const token = jwt.sign(payload, secret, {
-            expiresIn: 1800
+            expiresIn: 300
           });
-          res.cookie('token', token, { httpOnly: true })
-            .sendStatus(200);
-            }
+          res.json({isAuth:true, token:token});
             // Wrong password rerenders the login page with Password Error  *Fixed*
-            else{
+        } else{
                 res.json( {message: "Unsuccessful login"});
             }
         }
